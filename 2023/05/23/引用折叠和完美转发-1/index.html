@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>PGH_DanDCoding</title>
+  <title>引用折叠和完美转发 | PGH_DanDCoding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="PGH_DanDCoding">
-<meta property="og:url" content="https://pengguanhua.github.io/index.html">
+  <meta name="description" content="引用折叠、万能引用和forward完美转发1.引用折叠指以下情况1234int &amp;&amp; &amp;x;&#x2F;&#x2F;左值引用int &amp; &amp;&amp;x;&#x2F;&#x2F;左值引用int &amp; &amp;x;&#x2F;&#x2F;左值引用int &amp;&amp; &amp;&amp;x;&#x2F;&#x2F;右值引用  即当两个折叠的引用中存在左值引用时，则整体为左值引用，两个都为右值引用时，则为右值引用。 2.万能引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引用折叠和完美转发">
+<meta property="og:url" content="https://pengguanhua.github.io/2023/05/23/%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91-1/index.html">
 <meta property="og:site_name" content="PGH_DanDCoding">
+<meta property="og:description" content="引用折叠、万能引用和forward完美转发1.引用折叠指以下情况1234int &amp;&amp; &amp;x;&#x2F;&#x2F;左值引用int &amp; &amp;&amp;x;&#x2F;&#x2F;左值引用int &amp; &amp;x;&#x2F;&#x2F;左值引用int &amp;&amp; &amp;&amp;x;&#x2F;&#x2F;右值引用  即当两个折叠的引用中存在左值引用时，则整体为左值引用，两个都为右值引用时，则为右值引用。 2.万能引">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-22T21:15:04.000Z">
+<meta property="article:modified_time" content="2023-05-22T21:16:13.722Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="PGH_DanDCoding" type="application/atom+xml">
@@ -71,103 +76,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/05/23/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-05-22T23:28:58.069Z" itemprop="datePublished">2023-05-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/05/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pengguanhua.github.io/2023/05/23/hello-world/" data-id="clhzhbnmc0000lwvl3ux08erk" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hexo搭建个人博客小节" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/05/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%8A%82/" class="article-date">
-  <time class="dt-published" datetime="2023-05-22T22:05:04.000Z" itemprop="datePublished">2023-05-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/05/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%8A%82/">hexo搭建个人博客小节</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>​      </p>
-<p>​		做一个个人技术博客，是菜蛋仔一直想做但又因为各种原因没做起来的，最近临近找工作了，学的记的东西多，忘得也快，感觉很有必要用一个方式记录和总结自己的学习实践过程，所以便做了这个博客。</p>
-<h4 id="1-hexo和Github-Pages"><a href="#1-hexo和Github-Pages" class="headerlink" title="1.hexo和Github Pages"></a>1.hexo和Github Pages</h4><p>hexo是一种十分便捷的博客搭建框架，基于github的Pages功能实现，</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://pengguanhua.github.io/2023/05/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%8A%82/" data-id="clhzhjqv300004wvl8ymsf4rn" data-title="hexo搭建个人博客小节" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-%E5%89%8D%E7%AB%AF/" rel="tag">hexo 前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-引用折叠和完美转发-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-引用折叠和完美转发-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/05/23/%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91-1/" class="article-date">
   <time class="dt-published" datetime="2023-05-22T21:15:04.000Z" itemprop="datePublished">2023-05-23</time>
@@ -180,8 +89,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/05/23/%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91-1/">引用折叠和完美转发</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      引用折叠和完美转发
     </h1>
   
 
@@ -234,11 +143,23 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%8A%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hexo搭建个人博客小节
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 
 </section>
