@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>PGH_DanDCoding</title>
+  
+  
+  <link href="https://pengguanhua.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://pengguanhua.github.io/"/>
+  <updated>2023-05-22T23:34:48.168Z</updated>
+  <id>https://pengguanhua.github.io/</id>
+  
+  <author>
+    <name>PGH</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo搭建个人博客小节</title>
+    <link href="https://pengguanhua.github.io/2023/05/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%8A%82/"/>
+    <id>https://pengguanhua.github.io/2023/05/23/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%8A%82/</id>
+    <published>2023-05-22T22:05:04.000Z</published>
+    <updated>2023-05-22T23:34:48.168Z</updated>
+    
+    <content type="html"><![CDATA[<p>​      </p><p>​做一个个人技术博客，是菜蛋仔一直想做但又因为各种原因没做起来的，最近临近找工作了，学的记的东西多，忘得也快，感觉很有必要用一个方式记录和总结自己的学习实践过程，所以便做了这个博客。</p><h4 id="1-hexo和Github-Pages"><a href="#1-hexo和Github-Pages" class="headerlink" title="1.hexo和Github Pages"></a>1.hexo和Github Pages</h4><p>hexo是一种十分便捷的博客搭建框架，基于github的Pages功能实现，</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;​      &lt;/p&gt;
+&lt;p&gt;​		做一个个人技术博客，是菜蛋仔一直想做但又因为各种原因没做起来的，最近临近找工作了，学的记的东西多，忘得也快，感觉很有必要用一个方式记录和总结自己的学习实践过程，所以便做了这个博客。&lt;/p&gt;
+&lt;h4 id=&quot;1-hexo和Github-Pa</summary>
+      
+    
+    
+    
+    
+    <category term="hexo 前端" scheme="https://pengguanhua.github.io/tags/hexo-%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>引用折叠和完美转发</title>
+    <link href="https://pengguanhua.github.io/2023/05/23/%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91-1/"/>
+    <id>https://pengguanhua.github.io/2023/05/23/%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91-1/</id>
+    <published>2023-05-22T21:15:04.000Z</published>
+    <updated>2023-05-22T21:16:13.722Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引用折叠、万能引用和forward完美转发"><a href="#引用折叠、万能引用和forward完美转发" class="headerlink" title="引用折叠、万能引用和forward完美转发"></a>引用折叠、万能引用和forward完美转发</h3><h4 id="1-引用折叠指以下情况"><a href="#1-引用折叠指以下情况" class="headerlink" title="1.引用折叠指以下情况"></a>1.引用折叠指以下情况</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> &amp;&amp; &amp;x;<span class="comment">//左值引用</span></span><br><span class="line"><span class="type">int</span> &amp; &amp;&amp;x;<span class="comment">//左值引用</span></span><br><span class="line"><span class="type">int</span> &amp; &amp;x;<span class="comment">//左值引用</span></span><br><span class="line"><span class="type">int</span> &amp;&amp; &amp;&amp;x;<span class="comment">//右值引用</span></span><br></pre></td></tr></table></figure><p>即当两个折叠的引用中存在左值引用时，则整体为左值引用，两个都为右值引用时，则为右值引用。</p><h4 id="2-万能引用"><a href="#2-万能引用" class="headerlink" title="2.万能引用"></a>2.万能引用</h4><p>声明一个类的构造函数时，对于左值和右值初始化的情况一般要分开考虑，如下</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>()&#123;&#125;;</span><br><span class="line">    <span class="built_in">A</span>(<span class="type">const</span> A&amp;a)&#123;<span class="comment">///&#125;</span></span><br><span class="line">    <span class="built_in">A</span>(A&amp;&amp;a)&#123;<span class="comment">///&#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>如此以来，两个构造函数就要分别来写，增加了代码量，所以我们可以设计一个函数可以接受两种引用类型。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(T&amp;&amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样T就可以自动推导出参数的类型，这里就会用到点引用折叠的知识，当传进来的为左值，比如int&amp;时，T就被推到成int&amp;，此时T&amp;&amp;(int&amp; &amp;&amp;)表示左值引用，而传进来右值,比如int&amp;&amp;时，T就被推导成int&amp;&amp;，此时T&amp;&amp;(int&amp;&amp; &amp;&amp;)表示一个右值。</p><p>特别注意，Type &amp;&amp; &amp; ，Type&amp;&amp; &amp;&amp;或Type&amp; &amp;&amp;这种写法不允许显式定义。</p><h4 id="3-完美转发"><a href="#3-完美转发" class="headerlink" title="3.完美转发"></a>3.完美转发</h4><p>这时我们可以写参数为万能引用的函数的函数体了，但有一个问题，不管传进来的是左值引用还是右值引用，其引用本身都是一个左值（有名）,所以需要一个方法不改变其传进来的类型进行后续操作，比如转发等。</p><p>这时候就可以用到forward进行完美转发了。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">call</span><span class="params">(T&amp;&amp;)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;T&amp;&amp;&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">call</span><span class="params">(T&amp;)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;T&amp;&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(T&amp;&amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//若使用这种，则a会被当做左值引用转发</span></span><br><span class="line"><span class="comment">//call(a);</span></span><br><span class="line">    <span class="comment">//若使用这种则实现完美转发</span></span><br><span class="line">    <span class="built_in">call</span>(forward&lt;T&gt;(a));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>通过forward将参数强制转化为和T一样的类型，这样就实现了保持引用类型不变的完美转发。</p><h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><h4 id="1-shared-ptr"><a href="#1-shared-ptr" class="headerlink" title="1.shared_ptr"></a>1.shared_ptr</h4><h4 id="2-unique-ptr"><a href="#2-unique-ptr" class="headerlink" title="2.unique_ptr"></a>2.unique_ptr</h4><h4 id="3-weak-ptr"><a href="#3-weak-ptr" class="headerlink" title="3.weak_ptr"></a>3.weak_ptr</h4><h3 id="c-进制转换"><a href="#c-进制转换" class="headerlink" title="c++进制转换"></a>c++进制转换</h3><h4 id="华为20230506的一个笔试题需要将16进制字符串转化为二进制字符串，当时不知道有现成的方法可以调用，写的很复杂，现在总结一下c-11里的进制转换的方法。"><a href="#华为20230506的一个笔试题需要将16进制字符串转化为二进制字符串，当时不知道有现成的方法可以调用，写的很复杂，现在总结一下c-11里的进制转换的方法。" class="headerlink" title="华为20230506的一个笔试题需要将16进制字符串转化为二进制字符串，当时不知道有现成的方法可以调用，写的很复杂，现在总结一下c++11里的进制转换的方法。"></a>华为20230506的一个笔试题需要将16进制字符串转化为二进制字符串，当时不知道有现成的方法可以调用，写的很复杂，现在总结一下c++11里的进制转换的方法。</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">hex2bit</span><span class="params">(string&amp;hex,string&amp;bit)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> tem=<span class="built_in">stoi</span>(hex,<span class="number">0</span>,<span class="number">0</span>);<span class="comment">//第一个0为开始转换的位置，第二个0表示可以自动检查类型，0x开头就是16进制</span></span><br><span class="line">    bit&lt;<span class="number">16</span>&gt;<span class="built_in">t</span>(tem);<span class="comment">//16表示字符串的长度</span></span><br><span class="line">    bit=t.<span class="built_in">to_string</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string hex,bit;</span><br><span class="line">    hex=<span class="string">&quot;0xFFFF&quot;</span>;</span><br><span class="line">    <span class="built_in">hex2bit</span>(hex,bit);</span><br><span class="line">    cout&lt;&lt;bit;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;引用折叠、万能引用和forward完美转发&quot;&gt;&lt;a href=&quot;#引用折叠、万能引用和forward完美转发&quot; class=&quot;headerlink&quot; title=&quot;引用折叠、万能引用和forward完美转发&quot;&gt;&lt;/a&gt;引用折叠、万能引用和forward完美转发&lt;/</summary>
+      
+    
+    
+    
+    
+    <category term="c++" scheme="https://pengguanhua.github.io/tags/c/"/>
+    
+  </entry>
+  
+</feed>
